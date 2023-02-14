@@ -64,15 +64,16 @@ if __name__ == "__main__":
     model_version=1
     
     features_num = 238
+    batch_size = 1
 
-    fake_test_data = np.array(np.random.uniform(0, 0, size=features_num))
+    fake_test_data = np.array(np.random.uniform(0, 0, size=(batch_size, features_num)))
 
-    assert len(fake_test_data) == features_num
+    assert fake_test_data.shape[1] == features_num
 
     
     fake_test_data_float32 = downcast_array(input_arr=fake_test_data, target_type=np.float32)
 
-    assert type(fake_test_data_float32[0]) == np.float32
+    assert fake_test_data_float32.dtype == np.float32
 
     print(fake_test_data_float32.dtype)
     print(fake_test_data_float32)
