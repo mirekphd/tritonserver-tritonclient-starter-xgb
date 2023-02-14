@@ -70,15 +70,15 @@ if __name__ == "__main__":
 
     assert fake_test_data.shape[1] == features_num
 
-    
     fake_test_data_float32 = downcast_array(input_arr=fake_test_data, target_type=np.float32)
 
     assert fake_test_data_float32.dtype == np.float32
 
+    print("\nPredictors input array - type, shape, contents:")
     print(fake_test_data_float32.dtype)
+    print(fake_test_data_float32.shape)
     print(fake_test_data_float32)
-    
-    
+
     # generate predictions using GRPC endpoint
     triton_result = triton_predict_grpc(triton_client=triton_client_grpc, 
                                    input_arr=fake_test_data_float32, 
@@ -87,7 +87,12 @@ if __name__ == "__main__":
                                    datatype="FP32"
                                    # datatype="FP64"
                                   )
-    
-    
 
-    
+    print("\nReturned model predictions array shape:")
+    print(triton_result.shape)
+
+    print("\nReturned model predictions array:")
+    print(triton_result)
+
+    print("\nReturned class 1 proba prediction:")
+    print(triton_result[0, 1])
