@@ -47,8 +47,8 @@ if __name__ == "__main__":
     # caution: if the connection to localhost does not work,
     # use container IPAddres obtained e.g. from:
     # docker inspect triton | grep IPAddress
-    triton_host = 'localhost'
-    # triton_host = '172.17.0.2'
+    # triton_host = 'localhost'
+    triton_host = '172.17.0.2'
     # xtriton_host = '172.17.0.3'
 
     # triton_port_http = 8000
